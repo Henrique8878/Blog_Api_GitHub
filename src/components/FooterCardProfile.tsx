@@ -5,14 +5,16 @@ import vectorComentary from '../assets/vectorComentary.png'
 import vectorCalendar from '../assets/vectorCalendar.png'
 import { useContext } from 'react'
 import { ContextApiExport } from '../contexts/contextApp'
+import {dateFormatter} from '../utils/formatterData'
 
 interface typePropsFooterCard{
-    typePage:"home"|"issue"
+    typePage:"home"|"issue",
+    comments?:number
 }
 
 
-export function FooterCardProfile({typePage}:typePropsFooterCard){
-    const {login, followers,company,comments,updated_at} = useContext(ContextApiExport)
+export function FooterCardProfile({typePage,comments}:typePropsFooterCard){
+    const {login, followers,company,updated_at} = useContext(ContextApiExport)
     return(
 
         typePage=="home"?(
@@ -39,11 +41,13 @@ export function FooterCardProfile({typePage}:typePropsFooterCard){
             </div>
             <div className='flex gap-2'>
                 <img src={vectorCalendar} alt="" className="w-6 h-6" />
-                <span  className='font-Nunito text-xl text-base_text leading-pattern'>{updated_at}</span>
+                <span  className='font-Nunito text-xl text-base_text leading-pattern'>
+                    {dateFormatter.format(new Date(updated_at!))}
+                </span>
             </div>
             <div className='flex gap-2'>
                 <img src={vectorComentary} alt="" className="w-6 h-6" />
-                <span  className='font-Nunito text-xl text-base_text leading-pattern'>{comments!=undefined&&comments>1?`{${comments}} comentários`:`{${comments} comentário}`}</span>
+                <span  className='font-Nunito text-xl text-base_text leading-pattern'>{comments!=undefined&&comments>1?`${comments} comentários`:`${comments} comentário`}</span>
         </div>
 </div>
         )

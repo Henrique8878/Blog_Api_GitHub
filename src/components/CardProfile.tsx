@@ -10,10 +10,11 @@ import { useContext, useState } from 'react'
 interface patternPropsCard{
     typeCard:"home"| "issue",
     title:string,
-    link:string
+    link:string,
+    comments?:number
 }
 
-export function CardProfile({typeCard,title,link}:patternPropsCard){
+export function CardProfile({typeCard,title,link,comments}:patternPropsCard){
     const {bio,name,avatar_url} = useContext(ContextApiExport)
     const [LINK_RETURN] = useState("http://localhost:5173/")
     return(
@@ -27,7 +28,7 @@ export function CardProfile({typeCard,title,link}:patternPropsCard){
                     <VectorLink typePage='home' link = {link}/>
                 </div>
                 <span className='font-Nunito text-xl text-base_text leading-pattern line-clamp-1'>{bio}</span>
-                <FooterCardProfile typePage='home'/>
+                <FooterCardProfile typePage='home' comments={comments}/>
             </aside>
         </div>
         ):
@@ -41,7 +42,7 @@ export function CardProfile({typeCard,title,link}:patternPropsCard){
                 </div>
                 <article className='flex flex-col gap-5'>
                     <h2 className="font-Nunito leading-pattern text-3xl top-8 text-base_title">{title}</h2>
-                  <FooterCardProfile typePage='issue'/>
+                  <FooterCardProfile typePage='issue' comments={comments}/>
                 </article>
             </aside>
         </div>

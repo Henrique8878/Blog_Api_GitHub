@@ -69,25 +69,26 @@ export function ListGitHub(){
                     </section>
                 </article>
                         
-                {posts?.items.length==0?<h1 className="text-6xl"></h1>:  <div className='flex justify-between flex-wrap gap-8 w-[60%]'>
-                    {posts!=undefined&&posts.items.map((post)=>(
-                        
-                        <Link to={`/issue/${post.number}`} onClick={()=>setTitle(post.title)}>
-                            <Post
+                    <div className='flex flex-wrap justify-between gap-8 w-[60%]'>
+                        {posts!=undefined&&posts.items.map((post)=>(
                             
-                                key={post.id}
-                                title={post.title}
-                                updated_at={post.updated_at}
-                                body={post.body}
-                            />
-                        </Link>
-                    ))}
-                </div>}   
+                            <Link to={`/issue/${post.number}`} onClick={()=>setTitle(post.title)} className="flex flex-wrap w-[48%]">
+                                <Post
+                                    key={post.id}
+                                    title={post.title}
+                                    updated_at={post.updated_at}
+                                    body={post.body}
+                                />
+                            </Link>
+                        ))}
+                    </div>
+                    
             </main>
         </div>
     )
 }
 
+                            
 
 
        

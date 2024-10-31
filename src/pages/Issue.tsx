@@ -41,7 +41,7 @@ export function Issue(){
 
         <div className="w-screen h-screen">
             <header className="relative flex justify-center h-96 bg-bg_title bg-cover bg-center">
-                <CardProfile typeCard="issue" title={issue.title} link={LINK}/>
+                <CardProfile typeCard="issue" title={issue.title} link={LINK} comments={issue.comments}/>
             </header>
             <main className="flex flex-col gap-20 items-center pt-44 pb-44 bg-base_background">
                <article className="flex flex-col gap-8 w-[60%]">
